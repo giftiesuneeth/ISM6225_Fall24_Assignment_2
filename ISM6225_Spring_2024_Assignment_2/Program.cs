@@ -95,32 +95,27 @@ namespace Assignment_2
         {
             try
             {
-                int left = 0;
-        int right = nums.Length - 1;
+        List<int> evenList = new List<int>();
+        List<int> oddList = new List<int>();
 
-        while (left < right)
+        // Separate the even and odd numbers.
+        foreach (int num in nums)
         {
-            if (nums[left] % 2 == 0)
+            if (num % 2 == 0)
             {
-                left++;
-            }
-            else if (nums[right] % 2 == 1)
-            {
-                right--;
+                evenList.Add(num);
             }
             else
             {
-                int temp = nums[left];
-                nums[left] = nums[right];
-                nums[right] = temp;
-                left++;
-                right--;
+                oddList.Add(num);
             }
         }
 
-        return nums;// Write your code here
-                
-            }
+        // Combine the even numbers followed by the odd numbers.
+        evenList.AddRange(oddList);
+
+        return evenList.ToArray();
+    }
             catch (Exception)
             {
                 throw;
